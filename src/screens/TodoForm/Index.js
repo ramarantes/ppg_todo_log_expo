@@ -2,29 +2,41 @@ import React from 'react'
 import { addtodo } from '../../redux/actions/Index'
 import {connect} from 'react-redux'
 import { Text, View } from 'react-native';
+import {Font} from 'expo'
+import {Ionicons} from '@expo/vector-icons'
+import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
 
 class TodoForm extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.state = {todo:''}
+
+    }
+
+    async componentDidMount(){
+        await Font.loadAsync({
+            'Roboto': require('native-base/Fonts/Roboto.ttf'),
+            'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+            ...Ionicons.font,
+          });
+    }
 
     render(){
-        return <View>
-            {/* <form onSubmit={e => {
-                e.preventDefault(); 
-                this.props.addtodo(e); 
-                this.props.history.push('/');
-                }}>
-                    <Text>Descrição</Text>
-                    <TextInput
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                        onChangeText={(text) => this.setState({text})}
-                        value={this.state.text}
-                    />
-                    <input type="text" id="todoText" className="form-control"/>
-                    <small id="help" className="form-text text-muted">Insira aqui sua atividade</small>
-                    <input type="submit" value="salvar" className="btn btn-primary"/>
-            </form> */}
-        <Text>vai teia form!</Text>
-        </View>
+        return <Container>
+        <Header />
+        <Content>
+          <Form>
+            <Item fixedLabel>
+              <Label>Todo</Label>
+              <Input onChangeText={todo => this.setState({todo})}/>
+            </Item>
+            <Button onPress={() => alert('opa')}>
+            <Text>Click Me!</Text>
+          </Button >
+          </Form>
+        </Content>
+      </Container>
     }
 }
 const mapDispatchToProps = dispatch => ({
