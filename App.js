@@ -12,7 +12,7 @@ const store = createStore(rootReducer,applyMiddleware(thunk));
 
 const MainNavigator = createStackNavigator({
   Home:{screen:TodoList}
-  // ,  TodoForm:{screen:TodoForm}
+  ,  TodoForm:{screen:TodoForm}
 },
   {
     initialRouteName: "Home"

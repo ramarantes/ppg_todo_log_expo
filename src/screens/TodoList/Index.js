@@ -15,10 +15,10 @@ class TodoList extends React.Component {
             {this.props.todos.map(p =>
                   <TodoListItem key={p.id} obj={p} toggle={this.props.vaiteia} drop={this.props.drop}/>
                  )}<Text>opaz</Text>
-                 {/* <Button
+                 <Button
                 title="Go to Form"
                 onPress={() => this.props.navigation.navigate('TodoForm')}
-                /> */}
+                />
         </View>
     }
 }
