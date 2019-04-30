@@ -1,12 +1,13 @@
 import React from 'react'
-import { addtodo } from '../actions'
+import { addtodo } from '../../redux/actions/Index'
 import {connect} from 'react-redux'
+import { Text, View } from 'react-native';
 
 class TodoForm extends React.Component{
 
 
     render(){
-        return <div>
+        return <View>
             <form onSubmit={e => {
                 e.preventDefault(); 
                 this.props.addtodo(e); 
@@ -19,8 +20,8 @@ class TodoForm extends React.Component{
                     <input type="submit" value="salvar" className="btn btn-primary"/>
                 </div>
             </form>
-
-        </div>
+        <Text>vai teia form!</Text>
+        </View>
     }
 }
 const mapDispatchToProps = dispatch => ({

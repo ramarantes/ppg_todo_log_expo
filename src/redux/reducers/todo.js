@@ -1,9 +1,11 @@
 import constants from '../const'
 import _ from 'lodash'
+import {AsyncStorage} from 'react-native';
 
-// let startState = JSON.parse(localStorage.getItem("todolocalStorage"));
+// let startState =  async () => JSON.parse(await AsyncStorage.getItem("todolocalStorage"));
 // if(startState == null || startState=="") startState = []
-let startState = [{id:1, todo:'vai teia', completed:false}];
+//let startState = [{id:1, todo:'vai teia', completed:false}];
+let startState = [];
 
 export default (state = startState, action) => {
     let newState;
@@ -18,9 +20,12 @@ export default (state = startState, action) => {
         case constants.DROP_TODO:
             newState =  _.filter(state,o => o.id != action.payload);
             break;
+        case constants.LOAD_TODOBASE:
+            newState =  action.payload;
+            break;
         default:
         newState = state;
     }
-    // localStorage.setItem("todolocalStorage", JSON.stringify(newState));
+    AsyncStorage.setItem("todolocalStorage", JSON.stringify(newState));
     return newState;
 }
