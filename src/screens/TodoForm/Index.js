@@ -28,11 +28,11 @@ class TodoForm extends React.Component{
         <Content>
           <Form>
             <Item fixedLabel>
-              <Label>Todo</Label>
+              <Label>{this.state.todo}</Label>
               <Input onChangeText={todo => this.setState({todo})}/>
             </Item>
-            <Button onPress={() => alert('opa')}>
-            <Text>Click Me!</Text>
+            <Button onPress={() => this.props.addtodo(this.state.todo)}>
+            <Text>Add Todo</Text>
           </Button >
           </Form>
         </Content>
@@ -40,7 +40,7 @@ class TodoForm extends React.Component{
     }
 }
 const mapDispatchToProps = dispatch => ({
-    addtodo: e => dispatch(addtodo(e.target))
+    addtodo: e => dispatch(addtodo(e))
 });
 
 export default connect(null,mapDispatchToProps)(TodoForm);

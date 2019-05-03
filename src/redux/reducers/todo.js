@@ -11,7 +11,7 @@ export default (state = startState, action) => {
     let newState;
     switch(action.type){
         case constants.ADD_TODO:
-            let id = (state.length > 0 ? _.last(_.orderBy(state,'id')).id : 1) + 1;
+             let id = (state.length > 0 ? _.last(_.orderBy(state,'id')).id : 1) + 1;
             newState = [...state,{id, todo:action.payload, completed:false}];
             break;
         case constants.TOGGLE_TODO:

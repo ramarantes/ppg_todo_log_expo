@@ -1,9 +1,9 @@
 import constants from '../const'
 import {AsyncStorage} from 'react-native';
 
-export const addtodo = form => ({
+export const addtodo = value => ({
     type:constants.ADD_TODO,
-    payload: form[0].value
+    payload: value
 })
 
 export const toggleTodo = id => ({
